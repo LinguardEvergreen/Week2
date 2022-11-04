@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <string.h>
+
+int main () {
+        int i=0,pt;
+        char risposta='\0';
+        int scelta_iniziale,scelta_finale;
+        char nome[20]={'\0'};
+        do
+		{
+            pt=0;
+            printf("**************************************************************************************************************************************************************************************************************************************************");
+            printf("\nBenvenuto al gioco! Dovrai rispondere alle seguenti domande e se rispondi in maniera corretta guadagnerai punti! Per vincere il gioco devi almeno avere 2 punti. Sei pronto ad iniziare?\n");
+			printf("\nCiao, per prima cosa inserisci il tuo nome: ");
+            scanf("%s", &nome);
+            while (strlen(nome)>20){
+            	printf("\nHai superato il numero massimo di caratteri.\nRiprova ad inserire il nome: ");
+            	scanf("%s", &nome);
+            }
+            printf("\nPremi 1 per iniziare o 0 per uscire dal gioco: ");
+            scanf("%d", &scelta_iniziale);
+            	if(scelta_iniziale==0)
+            		return 0;
+            printf("Bene %s, iniziamo!!\n", nome);
+            switch (scelta_iniziale){
+                    case 1: {
+                            while(i==0){
+                            		printf("\nChe cosa vuol dire fare il backup?\n 1) Creare una copia dei dati;\n 2) Forzare il caricamento di un file;\n 3) Cancellare tutti i file.\nRisposta: ");
+                            		scanf("%c",&risposta);
+                                    if(risposta=='1'){
+                                            printf("\nCorretto!\n");
+                                            pt++;
+                                            i++;
+                                    }
+                                    else if (risposta=='2'){
+                                            printf("\nSbagliato. Prossima domanda\n");
+                                            i++; 
+                                    }
+                                    else if (risposta=='3'){
+                                            printf("\nSbagliato. Prossima domanda\n");
+                                            i++;
+                                    }   
+                                    else
+                                            printf("\nDevi inserire in numeri proposti!!\n");
+                            }
+                            i=0;
+                            while(i==0){
+                                    printf("\nChe combinazione di tasti usi per Copiare ed Incollare?\n 1) CTRL + Z ALT + SHIFT;\n 2) CTRL + C CTRL + Z;\n 3) CTRL + C CTRL + V.\nRisposta: ");
+                                    scanf("%c",&risposta);
+                                    if(risposta=='1'){
+                                            printf("\nSbagliato. Prossima domanda!\n");
+                                            i++;
+                                    }
+                                    else if (risposta=='2'){
+                                            printf("\nSbagliato. Prossima domanda\n");
+                                            i++; 
+                                    }
+                                    else if (risposta=='3'){
+                                            printf("\nCorretto|\n");
+                                            pt++;
+                                            i++;
+                                    }   
+                                    else
+                                            printf("\nDevi inserire in numeri proposti!!\n");
+                            }
+                            i=0;
+                            while(i==0){
+                                    printf("\nChe cosa si intende per Hardware?\n 1) Hardware è la parte di un computer che puoi toccare;\n 2) Hardware è la stessa cosa di dire internet;\n 3) Hardware è un comando di Linux.\nRisposta: ");
+                                    scanf("%c",&risposta);
+                                    if(risposta=='1'){
+                                            printf("\nCorretto!\n");
+                                            pt++;
+                                            i++;
+                                    }
+                                    else if (risposta=='2'){
+                                            printf("\nSbagliato. Prossima domanda\n");
+                                            i++; 
+                                    }
+                                    else if (risposta=='3'){
+                                            printf("\nSbagliato. Prossima domanda\n");
+                                            i++;
+                                    }
+                                    else
+                                            printf("\nDevi inserire in numeri proposti!!\n");
+                            }
+                            if(pt>=2)
+                                    printf("\nComplimenti, hai vinto. Questo è il tuo punteggio: %d", pt);
+                            else
+                                    printf ("\nMi dispiace, hai perso/n");
+                    		break;
+                    }
+            }
+            printf("\nVuoi rigiocare? Clicca 1 per rigiocare oppure 0 per uscire: ");
+            scanf("%d", &scelta_finale);
+        }
+            while(scelta_finale==1);
+        printf("\n**************************************************************************************************************************************************************************************************************************************************");
+        return 0;
+}
