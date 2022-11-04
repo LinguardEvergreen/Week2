@@ -5,30 +5,30 @@ void game();
 
 int main (){
 	char scelta_iniziale, scelta_finale;
-	bool s;	
+	bool s;			//Variabile utilizzata per il controllo delle scelte
 	do{
 		printf("\nBenvenuto al gioco! Dovrai rispondere alle seguenti domande e se rispondi in maniera corretta guadagnerai punti! Per vincere il gioco devi almeno avere 2 punti. Sei pronto ad iniziare?\n");
 		printf("\nCiao Gamer, facciamo un gioco\nY/N: ");
-		do{
-			scanf("%c",&scelta_iniziale);
-			rewind(stdin);
-			if(scelta_iniziale=='Y' || scelta_iniziale=='y'){
+		do{				//Con questo ciclo andiamo a controllare la risposta che inserisce l'utente
+			scanf("%c",&scelta_iniziale);			//Inserimento della scelta iniziale di giocare oppure no
+			rewind(stdin);				//Andiamo ad azzerare il buffer del comando di input scanf ad ogni suo utilizzo
+			if(scelta_iniziale=='Y' || scelta_iniziale=='y'){					//Se l'input risulta essere Y o y allora inizializza la variabilie booleana a false ed inizia la funzione game() da me creata
 				s=false;
 				game();
 			}
-			else if(scelta_iniziale=='N' || scelta_iniziale=='n'){
+			else if(scelta_iniziale=='N' || scelta_iniziale=='n'){				//Se l'input risulta essere N o n allora stampa la frase ed il programma aspetterà un input dell'utente per chiudere esso
 			
 				printf("Grazie per aver partecipato\n");
 				system("pause");
 				return 0;
 			}
-			else{
-				s=true;
+			else{				//Se l'input inserito dall'utente non risulta essere nè Y/y o N/n allora inizializza la variabile booleana a true, stampa la frase e
+				s=true;			//ripete il ciclo fino a quando non verrà inserito un carattere accettabile
 				printf("Inserimento errato! Per favore riprova: ");
 			}
 		}while(s);
 		printf("\nVuoi ancora giocare?\nSe si clicca Y oppure clicca qualsiasi altro tasto: ");
-		scanf("%c",&scelta_finale);
+		scanf("%c",&scelta_finale);				//Scelta finale dell'utente per ripetere il gioco oppure uscire dal programma
 		rewind(stdin);
 	}while(scelta_finale=='Y' || scelta_finale=='y');
 	printf("Alla prossima!");
@@ -37,18 +37,18 @@ int main (){
 }
 
 void game(){
-	char risposta;
-	char nome[20];
-	int pt;
-	bool s;
+	char risposta;		//variabile utilizzata per la risposta alle domande
+	char nome[20];		//variabile utilizzata per l'uso di un array di caratteri per comporre il nome
+	int pt;				//variabile utilizzata per il punteggio finale dato dalle risposte alle domande
+	bool s;				//variabile utilizzata per il controllo delle scelte
 	printf("\nCiao, per prima cosa inserisci il nome: ");
-	fgets (nome, 20, stdin);
+	fgets (nome, 20, stdin);		//Inserimento controllato del nome dell'utente
 	do{
 		pt=0;
 		printf("\nChe cosa vuol dire fare il backup?\n 1) Creare una copia dei dati;\n 2) Forzare il caricamento di un file;\n 3) Cancellare tutti i file.\nRisposta: ");
 		scanf("%c", &risposta);
 		rewind(stdin);
-		switch(risposta){
+		switch(risposta){			//Funzione utilizzata per gestire la casistica delle risposte dell'utente
 			case '1':{
 				printf("\nCorretto!\n");
 				pt++;
@@ -65,7 +65,7 @@ void game(){
 				s=false;
 				break;
 			}
-			default:{
+			default:{			//Caso default usato in caso l'utente inserisca un carattere non valido
 				printf("\nNon hai inserito correttamente la risposta, riprova\n");
 				s=true;
 				break;
@@ -128,7 +128,7 @@ void game(){
 			}
 		}
 	}while(s);
-	if (pt>1)
+	if (pt>1)			//Controllo tramite un if il punteggio per determinare se ha vinto o meno al gioco
 		printf("\nComplimenti, hai vinto! Questo è il tuo risultato: %d/3\n", pt);
 	else
 		printf("\nMi dispiace, non sei riuscito a vincere. Questo è il tuo risultato: %d/3\n",pt);
