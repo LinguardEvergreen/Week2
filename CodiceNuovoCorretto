@@ -1,0 +1,135 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void game();
+
+int main (){
+	char scelta_iniziale, scelta_finale;
+	bool s;	
+	do{
+		printf("\nBenvenuto al gioco! Dovrai rispondere alle seguenti domande e se rispondi in maniera corretta guadagnerai punti! Per vincere il gioco devi almeno avere 2 punti. Sei pronto ad iniziare?\n");
+		printf("\nCiao Gamer, facciamo un gioco\nY/N: ");
+		do{
+			scanf("%c",&scelta_iniziale);
+			rewind(stdin);
+			if(scelta_iniziale=='Y' || scelta_iniziale=='y'){
+				s=false;
+				game();
+			}
+			else if(scelta_iniziale=='N' || scelta_iniziale=='n'){
+			
+				printf("Grazie per aver partecipato\n");
+				system("pause");
+				return 0;
+			}
+			else{
+				s=true;
+				printf("Inserimento errato! Per favore riprova: ");
+			}
+		}while(s);
+		printf("\nVuoi ancora giocare?\nSe si clicca Y oppure clicca qualsiasi altro tasto: ");
+		scanf("%c",&scelta_finale);
+		rewind(stdin);
+	}while(scelta_finale=='Y' || scelta_finale=='y');
+	printf("Alla prossima!");
+	system("pause");
+	return 0;
+}
+
+void game(){
+	char risposta;
+	char nome[20];
+	int pt;
+	bool s;
+	printf("\nCiao, per prima cosa inserisci il nome: ");
+	fgets (nome, 20, stdin);
+	do{
+		pt=0;
+		printf("\nChe cosa vuol dire fare il backup?\n 1) Creare una copia dei dati;\n 2) Forzare il caricamento di un file;\n 3) Cancellare tutti i file.\nRisposta: ");
+		scanf("%c", &risposta);
+		rewind(stdin);
+		switch(risposta){
+			case '1':{
+				printf("\nCorretto!\n");
+				pt++;
+				s=false;
+				break;
+			}
+			case '2': {
+				printf("\nSbagliato. Prossima Domanda!\n");
+				s=false;
+				break;
+			}
+			case '3':{
+				printf("\nSbagliato. Prossima Domanda!\n");
+				s=false;
+				break;
+			}
+			default:{
+				printf("\nNon hai inserito correttamente la risposta, riprova\n");
+				s=true;
+				break;
+			}
+		}
+	}while(s);
+	do{
+		printf("\nChe combinazione di tasti usi per Copiare ed Incollare?\n 1) CTRL + Z + ALT + SHIFT;\n 2) CTRL + C CTRL + Z;\n 3) CTRL + C CTRL + V.\nRisposta: ");
+		scanf("%c", &risposta);
+		rewind(stdin);
+		switch(risposta){
+			case '1':{
+				printf("\nSbagliato. Prossima Domanda!\n");
+				s=false;
+				break;
+			}
+			case '2': {
+				printf("\nSbagliato. Prossima Domanda!\n");
+				s=false;
+				break;
+			}
+			case '3':{
+				printf("\nCorretto!\n");
+				pt++;
+				s=false;
+				break;
+			}
+			default:{
+				printf("\nNon hai inserito correttamente la risposta, riprova\n");
+				s=true;
+				break;
+			}
+		}
+	}while(s);
+	do{
+		printf("\nChe cosa si intende per Hardware?\n 1) Hardware è la parte di un computer che puoi prendere a calci;\n 2) Hardware è la stessa cosa di dire internet;\n 3) Hardware è un comando di Linux.\nRisposta: ");
+		scanf("%c", &risposta);
+		rewind(stdin);
+		switch(risposta){
+			case '1':{
+				printf("\nCorretto!\n");
+				pt++;
+				s=false;
+				break;
+			}
+			case '2': {
+				printf("\nSbagliato. Prossima Domanda!\n");
+				s=false;
+				break;
+			}
+			case '3':{
+				printf("\nSbagliato. Prossima Domanda!\n");
+				s=false;
+				break;
+			}
+			default:{
+				printf("\nNon hai inserito correttamente la risposta, riprova\n");
+				s=true;
+				break;
+			}
+		}
+	}while(s);
+	if (pt>1)
+		printf("\nComplimenti, hai vinto! Questo è il tuo risultato: %d/3\n", pt);
+	else
+		printf("\nMi dispiace, non sei riuscito a vincere. Questo è il tuo risultato: %d/3\n",pt);
+}
